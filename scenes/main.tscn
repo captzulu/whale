@@ -1,115 +1,23 @@
-[gd_scene load_steps=7 format=3 uid="uid://dmels38uaswnh"]
+[gd_scene load_steps=4 format=3 uid="uid://dmels38uaswnh"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_fh5oe"]
 [ext_resource type="PackedScene" uid="uid://bx1l5xk0iq241" path="res://scenes/parallax_background.tscn" id="2_r0n53"]
-[ext_resource type="Texture2D" uid="uid://bwqh2vmh5dyid" path="res://assets/2 Tileset/Tileset.png" id="3_3huqw"]
 [ext_resource type="PackedScene" uid="uid://c4m88fb3po40n" path="res://scenes/player.tscn" id="3_8sbe6"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xoa2y"]
-texture = ExtResource("3_3huqw")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-3:0/0 = 0
-4:0/0 = 0
-5:0/0 = 0
-6:0/0 = 0
-7:0/0 = 0
-8:0/0 = 0
-1:1/0 = 0
-3:1/0 = 0
-5:1/0 = 0
-6:1/0 = 0
-7:1/0 = 0
-8:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-2:2/0 = 0
-3:2/0 = 0
-4:2/0 = 0
-5:2/0 = 0
-6:2/0 = 0
-7:2/0 = 0
-8:2/0 = 0
-1:3/0 = 0
-3:3/0 = 0
-5:3/0 = 0
-6:3/0 = 0
-7:3/0 = 0
-8:3/0 = 0
-0:4/0 = 0
-1:4/0 = 0
-2:4/0 = 0
-3:4/0 = 0
-4:4/0 = 0
-5:4/0 = 0
-6:4/0 = 0
-7:4/0 = 0
-8:4/0 = 0
-1:5/0 = 0
-3:5/0 = 0
-5:5/0 = 0
-6:5/0 = 0
-7:5/0 = 0
-8:5/0 = 0
-0:6/0 = 0
-1:6/0 = 0
-2:6/0 = 0
-3:6/0 = 0
-4:6/0 = 0
-5:6/0 = 0
-6:6/0 = 0
-7:6/0 = 0
-8:6/0 = 0
-1:7/0 = 0
-3:7/0 = 0
-5:7/0 = 0
-6:7/0 = 0
-7:7/0 = 0
-8:7/0 = 0
-0:8/0 = 0
-1:8/0 = 0
-2:8/0 = 0
-3:8/0 = 0
-4:8/0 = 0
-5:8/0 = 0
-6:8/0 = 0
-7:8/0 = 0
-0:3/0 = 0
-0:1/0 = 0
-2:1/0 = 0
-2:3/0 = 0
-4:1/0 = 0
-4:3/0 = 0
-0:5/0 = 0
-2:5/0 = 0
-4:5/0 = 0
-4:7/0 = 0
-2:7/0 = 0
-0:7/0 = 0
-8:8/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_ujw4d"]
-sources/3 = SubResource("TileSetAtlasSource_xoa2y")
 
 [node name="Main" type="Node"]
 script = ExtResource("1_fh5oe")
 
 [node name="Environment" type="Node2D" parent="."]
+position = Vector2(0, 2)
 
 [node name="ParallaxBackground" parent="Environment" instance=ExtResource("2_r0n53")]
-scale = Vector2(2, 2)
-transform = Transform2D(2, 0, 0, 2, 0, 0)
 
 [node name="PlayerSpawn" type="Marker2D" parent="Environment"]
-position = Vector2(46, 215)
-
-[node name="TileMap" type="TileMap" parent="Environment"]
-tile_set = SubResource("TileSet_ujw4d")
-format = 2
+position = Vector2(40, 758)
 
 [node name="Player" parent="." instance=ExtResource("3_8sbe6")]
-position = Vector2(81, 257)
+z_index = 1
+position = Vector2(56, 240)
+disable_mode = 1
 
 [connection signal="ready" from="Player" to="." method="_on_player_ready"]

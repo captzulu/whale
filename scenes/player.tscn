@@ -1,8 +1,12 @@
-[gd_scene load_steps=29 format=3 uid="uid://c4m88fb3po40n"]
+[gd_scene load_steps=30 format=3 uid="uid://c4m88fb3po40n"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_iqmmm"]
 [ext_resource type="Texture2D" uid="uid://didlky1s00tyu" path="res://assets/Characters/blue-whale.png" id="1_w520w"]
 [ext_resource type="Texture2D" uid="uid://dikdkk751210w" path="res://assets/Characters/blue-whale-smile.png" id="2_0rr4e"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qyc6a"]
+radius = 22.0
+height = 76.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qlnqp"]
 atlas = ExtResource("1_w520w")
@@ -187,18 +191,17 @@ animations = [{
 
 [node name="Player" type="CharacterBody2D"]
 texture_filter = 1
-motion_mode = 1
+collision_layer = 2
+floor_stop_on_slope = false
 script = ExtResource("1_iqmmm")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_qyc6a")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-3.9, 4)
 scale = Vector2(1.2, 1.2)
 sprite_frames = SubResource("SpriteFrames_ehuig")
 animation = &"smile"
-frame_progress = 0.586825
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-visible = false
-position = Vector2(-129, -105)
-scale = Vector2(1.2, 1.2)
-polygon = PackedVector2Array(70, 94, 80, 91, 90, 97, 105, 97, 105, 108, 114, 107, 121, 103, 123, 96, 129, 97, 137, 88, 137, 81, 125, 73, 99, 73, 91, 76, 84, 76, 76, 72)
+frame_progress = 0.0657409
