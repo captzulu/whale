@@ -17,7 +17,8 @@ config/icon="res://icon.svg"
 
 [display]
 
-window/size/viewport_height=926
+window/size/viewport_height=585
+window/stretch/mode="canvas_items"
 
 [input]
 
@@ -61,6 +62,7 @@ exit={
 
 2d_physics/layer_1="environment"
 2d_physics/layer_2="characters"
+2d_physics/layer_3="Player"
 
 [rendering]
 

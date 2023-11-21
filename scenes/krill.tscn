@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://dkeafbsyc0i67"]
+
+[ext_resource type="Script" path="res://scripts/Krill.gd" id="1_g7xst"]
+[ext_resource type="Texture2D" uid="uid://blk3w1b1ceexa" path="res://assets/Characters/krill-1.png" id="2_vv24j"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o0yik"]
+radius = 4.85046
+height = 9.70093
+
+[node name="Krill" type="RigidBody2D"]
+position = Vector2(308.546, 384.526)
+collision_layer = 2
+collision_mask = 5
+gravity_scale = 0.0
+max_contacts_reported = 2
+contact_monitor = true
+script = ExtResource("1_g7xst")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_o0yik")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_vv24j")
+
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
